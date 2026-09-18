@@ -1,0 +1,45 @@
+
+<div class="page-holder align-items-center py-4 bg-gray-100 vh-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-8 offset-2 col-xs-12 px-lg-4 ">
+                <div class="card">
+                    <div class="card-header px-lg-5 bg-indigo">
+                        <div class="card-heading text-primary text-center"> <img src="gdcit/assets/logoGDC.png "
+                         style="
+                            width: 4em;
+                            height: 4em;
+                        "  class="rounded mx-auto d-block logoGDC"></div>
+                    </div>
+                    <div class="card-body p-lg-3">
+                        <form [formGroup]="form" class="form-signin">
+                            <div class="text-center mb-1">
+                                <h1 class="h3 mb-1 font-weight-normal">Registrarse</h1>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input formControlName="usuario" type="text" id="inputEmail" class="form-control" placeholder="Usuario" required="" autofocus="">
+                            </div>
+                            <div  *ngIf="form.controls['usuario'].hasError('required')" class="text-danger mt-1">* Usuario obligatorio</div>
+                            <div class="form-label-group mt-1">
+                                <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="">
+                            </div>
+                            <div  *ngIf="form.controls['password'].hasError('required')" class="text-danger mt-1">* Contraseña obligatoria</div>
+                            <div class="form-label-group mt-1">
+                                <input formControlName="newPassword" type="password" id="inputPassword" class="form-control" placeholder="Confrimar contraseña" required="">
+                            </div>
+                            <div  *ngIf="form.controls['newPassword'].hasError('required')" class="text-danger mt-1">* Confirmacion obligatoria</div>
+                            <div  *ngIf="form.controls['newPassword'].value && (form.controls['password'].value != form.controls['newPassword'].value)" class="text-danger mt-1">* Las contraseñas deben coincidir </div>
+                            <button [disabled]="!form.valid || ( form.controls['password'].value != form.controls['newPassword'].value)"  (click)="signIn()" class="btn btn-lg btn-primary btn-block mt-5" type="submit">Registrarse</button>
+                            <div class="text-center"><a class="nav-link" aria-current="page" routerLink="/login" title="EMPLEADOS">Login</a>
+                            </div>
+                            </form>
+                    </div>
+                    <div class="card-footer px-lg-5 py-lg-4 bg-indigo">
+                        <div class="text-sm text-muted"> ... </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
